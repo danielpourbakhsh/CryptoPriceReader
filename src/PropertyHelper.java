@@ -13,7 +13,7 @@ public class PropertyHelper extends Properties{
 			try {
 				instance = new PropertyHelper();
 							
-				FileInputStream stream =new FileInputStream("C:\\th_workspace\\BitcoinReader\\src\\import.properties");
+				FileInputStream stream =new FileInputStream(".\\src\\import.properties");
 				
 				instance.load(stream);
 					
