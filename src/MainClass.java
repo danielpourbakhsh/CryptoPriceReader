@@ -15,10 +15,10 @@ import java.util.Date;
 public class MainClass {
 
     public static void main(String[] args) {
-        readAndWriteBitcoinData();
+        readAndWritePriceData();
     }
 
-    public static void readAndWriteBitcoinData() {
+    public static void readAndWritePriceData() {
 
         PropertyHelper helper = PropertyHelper.getInstance();
 
@@ -32,14 +32,15 @@ public class MainClass {
                 String line = in.readLine();
                 if (line.contains(helper.getProperty("tokenone")) && line.contains(helper.getProperty("tokentwo"))) {
 
-                    int valuestart= Integer.parseInt(helper.getProperty("valuestart"));
-                    int valueend = Integer.parseInt(helper.getProperty("valueend"));
+                    int valueStart= Integer.parseInt(helper.getProperty("valuestart"));
+                    int valueEnd = Integer.parseInt(helper.getProperty("valueend"));
 
-                    String bitcoinpreis = line.substring(valuestart, line.length() - valueend);
+                    String price = line.substring(valueStart, line.length() - valueEnd);
 
                     Timestamp timeStamp = new Timestamp(new Date().getTime());
 
-                    System.out.println("Der Bitcoinpreis ist: " + bitcoinpreis +  " " + helper.getProperty("currency") +
+                    System.out.println("Der " + helper.getProperty("crypto") +
+                            "preis ist: " + price +  " " + helper.getProperty("currency") +
                             " (" + timeStamp + ")");
 
                     System.out.println("Timezone: " + helper.getProperty("timezone"));
@@ -51,8 +52,9 @@ public class MainClass {
                     }
                     BufferedWriter bw =  new BufferedWriter(new FileWriter(file));
 
-                    bw.write("Der Bitcoinpreis ist: " + bitcoinpreis +  " " + helper.getProperty("currency") +
-                            " (" + timeStamp + ")");
+                    bw.write("Der " + helper.getProperty("crypto") +
+                            "preis ist: " + price +  " " + helper.getProperty("currency") +
+                                    " (" + timeStamp + ")");
                     System.out.println("Datei geschrieben...");
 
                     bw.close();

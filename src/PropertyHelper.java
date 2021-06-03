@@ -6,8 +6,8 @@ import java.util.Properties;
 public class PropertyHelper extends Properties{
 	private static PropertyHelper instance = null;
 	
-	private PropertyHelper() {	
-	}
+	private PropertyHelper() { }
+
 	public static PropertyHelper getInstance() {
 		if (instance == null) {
 			try {
