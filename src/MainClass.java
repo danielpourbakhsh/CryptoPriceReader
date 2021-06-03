@@ -38,10 +38,11 @@ public class MainClass {
                     String price = line.substring(valueStart, line.length() - valueEnd);
 
                     Timestamp timeStamp = new Timestamp(new Date().getTime());
+                    String timeStampStr = timeStamp.toString().substring(0, timeStamp.toString().length()-4);
 
-                    System.out.println("Der " + helper.getProperty("crypto") +
-                            "preis ist: " + price +  " " + helper.getProperty("currency") +
-                            " (" + timeStamp + ")");
+                    System.out.println("One " + helper.getProperty("crypto") +
+                            " equals " + price +  " " + helper.getProperty("currency") +
+                            " (" + timeStampStr + ").");
 
                     System.out.println("Timezone: " + helper.getProperty("timezone"));
                     System.out.println("encoding: " + helper.getProperty("encoding"));
@@ -52,16 +53,14 @@ public class MainClass {
                     }
                     BufferedWriter bw =  new BufferedWriter(new FileWriter(file));
 
-                    bw.write("Der " + helper.getProperty("crypto") +
-                            "preis ist: " + price +  " " + helper.getProperty("currency") +
-                                    " (" + timeStamp + ")");
-                    System.out.println("Datei geschrieben...");
+                    bw.write("One " + helper.getProperty("crypto") +
+                            " equals " + price +  " " + helper.getProperty("currency") +
+                            " (" + timeStampStr + ").");
+                    System.out.println("File written...");
 
                     bw.close();
                 }
-
             }
-
             in.close();
 
         } catch (MalformedURLException malformedURLException) {
